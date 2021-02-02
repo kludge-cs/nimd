@@ -1,0 +1,65 @@
+{
+	"name": "nimd",
+	"version": "1.0.0",
+	"description": "Not In My Dependencies - A modern solution to poor design.",
+	"main": "src/main.js",
+	"scripts": {
+		"start": "npm run lint && node src/main.js",
+		"test": "nyc --reporter=lcov mocha test/**/*.test.js",
+		"lint": "eslint src bin --ext .json,.js --fix",
+		"gpr": "git pull && npm start"
+	},
+	"bin": {
+		"nimd": "bin/nimd.js"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/kludge-cs/nimd.git"
+	},
+	"keywords": [
+		"dependencies",
+		"dependency",
+		"management",
+		"nimd",
+		"npm",
+		"yarn"
+	],
+	"author": {
+		"name": "Nytelife26 (Tyler J. Russell)",
+		"email": "nytelife@protonmail.com",
+		"url": "https://github.com/Nytelife26"
+	},
+	"devDependencies": {
+		"@commitlint/cli": "^11.0.0",
+		"@commitlint/config-conventional": "^11.0.0",
+		"@kludge-cs/eslint-config-js": "^1.0.2",
+		"@semantic-release/changelog": "^5.0.1",
+		"@semantic-release/git": "^9.0.0",
+		"commitizen": "^4.2.2",
+		"cz-conventional-changelog": "^3.3.0",
+		"eslint": "^7.19.0",
+		"eslint-plugin-json": "^2.1.2",
+		"husky": "^4.3.6",
+		"mocha": "^8.2.1",
+		"nyc": "^15.1.0",
+		"semantic-release": "^17.2.4",
+		"sinon": "^9.2.2"
+	},
+	"config": {
+		"commitizen": {
+			"path": "cz-conventional-changelog"
+		}
+	},
+	"husky": {
+		"hooks": {
+			"pre-push": "npm run lint && npm test",
+			"pre-commit": "npm run lint",
+			"commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+		}
+	},
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/kludge-cs/nimd/issues"
+	},
+	"homepage": "https://github.com/kludge-cs/nimd#readme"
+}
